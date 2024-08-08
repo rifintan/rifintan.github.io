@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope Letter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+	  overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 150vh;
+      margin: 0;
+    }
+    .envelope-container {
+      width: 80%;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 80%;
+      max-height: 1000px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+    .envelope-front,
+    .envelope-back {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+    .envelope-front {
+      left: 0;
+      z-index: 2;
+      transform-origin: left center;
+      background-image: linear-gradient(to right, #e6e6e6, #fff);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .envelope-back {
+      right: 0;
+      z-index: 1;
+      transform-origin: right center;
+      background-image: linear-gradient(to left, #e6e6e6, #fff);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    .envelope.open .envelope-front {
+      transform: rotateY(-180deg);
+    }
+    .envelope.open .envelope-back {
+      transform: rotateY(180deg);
+    }
+    .letter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .envelope.open .letter {
+      opacity: 1;
+    }
+    .letter iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow-x: hidden;
+	  transform: scaleX(1);
+    }
+    .letter-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .love-icon {
+      position: absolute;
+      font-size: 30px;
+      color: #ff0000;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="padding-top:80px">HEllooo</h2>
+  <div class="envelope-container">
+    <div class="envelope">
+      <div class="envelope-front">
+        <center>
+          <h2>Heloo</h2>
+        </center>
+      </div>
+      <div class="envelope-back">
+        <center>
+          <h2>Heloo</h2>
+        </center>
+      </div>
+      <div class="letter">
+        <iframe src="main/index.html" style="overflow-x:hidden"></iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+    const envelope = document.querySelector('.envelope');
+    const audio = new Audio('willamette-stone-heart-like-yours.m4a');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+    });
+    /*
+    document.addEventListener('click', () => {
+      audio.play().catch(error => {
+        console.error('Failed to play audio:', error);
+      });
+    });*/
+  </script>
+</body>
+</html>
