@@ -103,17 +103,30 @@
 </head>
 <body>
 
-  <h2 style="padding-top:80px">HEllooo</h2>
+  <h1 style="padding-top:50px; padding-bottom:20px; font-family: 'Monotype Corsiva';font-size: 30pt">Assalamua'laikum Warahmatullahi Wabaarakaatu</h1>
   <div class="envelope-container">
     <div class="envelope">
       <div class="envelope-front">
         <center>
-          <h2>Heloo</h2>
+          <div style="padding-top: 100px; font-family: 'Monotype Corsiva';" >
+              <h1 style="font-size: 60pt;">Happy<br>
+              Anniversary<br>
+              1<br>
+              Year<br>
+              Intan ❤<br>
+              </h1>
+          </div>
         </center>
       </div>
       <div class="envelope-back">
         <center>
-          <h2>Heloo</h2>
+          <div style="padding-top: 150px; font-family: 'Monotype Corsiva';" >
+          <h1 style="font-size: 60pt;">
+            Little gift<br>
+            Suprise For you<br>
+            Hope you <br>
+            Love it <br>
+            </h1>
         </center>
       </div>
       <div class="letter">
@@ -121,18 +134,44 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <i class="fas fa-play audio-control"></i>
   <script>
     const envelope = document.querySelector('.envelope');
+    const audioControl = document.querySelector('.audio-control');
     const audio = new Audio('willamette-stone-heart-like-yours.m4a');
+    let isPlaying = false;
 
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('open');
     });
+
+    audioControl.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent the document click event from firing
+      if (isPlaying) {
+        audio.pause();
+        audioControl.classList.remove('fa-pause');
+        audioControl.classList.add('fa-play');
+      } else {
+        audio.play().catch(error => {
+          console.error('Failed to play audio:', error);
+        });
+        audioControl.classList.remove('fa-play');
+        audioControl.classList.add('fa-pause');
+      }
+      isPlaying = !isPlaying;
+    });
     
     document.addEventListener('click', () => {
-      audio.play().catch(error => {
-        console.error('Failed to play audio:', error);
-      });
+      if (!isPlaying) {
+        audio.play().catch(error => {
+          console.error('Failed to play audio:', error);
+        });
+        isPlaying = true;
+        audioControl.classList.remove('fa-play');
+        audioControl.classList.add('fa-pause');
+      }
     });
   </script>
 </body>
