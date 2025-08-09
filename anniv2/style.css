@@ -95,7 +95,7 @@ body::-webkit-scrollbar {
 }
 
 .wrapper img {
-  width: 300px;
+  width: 140px;
   transition: transform 1s, opacity 1s;
   opacity: 0;
 }
